@@ -1,4 +1,4 @@
-// Handles loading the events for <model-viewer>'s slotted progress bar
+// Handles loading the events for <model-viewer's> slotted progress bar
 const onProgress = (event) => {
   const progressBar = event.target.querySelector('.progress-bar');
   const updatingBar = event.target.querySelector('.update-bar');
@@ -10,4 +10,20 @@ const onProgress = (event) => {
     progressBar.classList.remove('hide');
   }
 };
-document.querySelector('model-viewer').addEventListener('progress', onProgress);
+
+const enterAR = () => {
+  const modelViewer = document.querySelector('model-viewer');
+  modelViewer.addEventListener('load', () => {
+    // Automatically enter AR mode when the model is loaded
+    const arButton = modelViewer.shadowRoot.querySelector('button[slot="ar-button"]');
+    if (arButton) {
+      arButton.click();
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modelViewer = document.querySelector('model-viewer');
+  modelViewer.addEventListener('progress', onProgress);
+  enterAR();
+});
