@@ -12,7 +12,7 @@
 <body>
   <!-- <model-viewer> HTML element -->
   <model-viewer src="Meow Meow_Autum_HappyBirthdayText.glb" ios-src="cat.usdz" ar
-    ar-modes="quick-look scene-viewer webxr" camera-controls poster="cat.png" shadow-intensity="1.22" exposure="0.86"
+    ar-modes="webxr scene-viewer quick-look" camera-controls poster="cat.png" shadow-intensity="1.22" exposure="0.86"
     tone-mapping="neutral" autoplay scale="0.2 0.2 0.2">
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
@@ -24,7 +24,7 @@
       <img src="ar_hand_prompt.png">
     </div>
   </model-viewer>
-  <audio id="ar-audio" src="song.mp3" loop></audio>
+  <audio id="ar-audio" src="song.mp3" loop playsinline></audio>
   <script src="script.js"></script>
   <!-- Loads <model-viewer> for browsers: -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>

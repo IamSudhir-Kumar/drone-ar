@@ -14,6 +14,17 @@ document.querySelector('model-viewer').addEventListener('progress', onProgress);
 
 const modelViewer = document.querySelector('model-viewer');
 const audio = document.querySelector('#ar-audio');
+const arButton = document.querySelector('#ar-button');
+
+// Unlock audio on a user gesture (clicking the AR button)
+arButton.addEventListener('click', () => {
+  // We don't play it yet, but we 'touch' it so the browser allows playback later
+  audio.play().then(() => {
+    audio.pause();
+  }).catch(e => {
+    console.warn("Audio interaction failed", e);
+  });
+});
 
 modelViewer.addEventListener('ar-status', (event) => {
   if (event.detail.status === 'session-started') {
